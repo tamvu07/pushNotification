@@ -25,6 +25,7 @@
 		E55EFAF0269C3085004D6FDE /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55EFAEF269C3085004D6FDE /* ConversationsViewController.swift */; };
 		E55EFAF3269C30A5004D6FDE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55EFAF2269C30A5004D6FDE /* ProfileViewController.swift */; };
 		E55EFAFD269C3A70004D6FDE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55EFAFC269C3A70004D6FDE /* Extensions.swift */; };
+		E56AB0AC269EB5850079B43F /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56AB0AB269EB5850079B43F /* ChatsViewController.swift */; };
 		E5712C4A2696D5C000081D90 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5712C492696D5C000081D90 /* ImagesViewController.swift */; };
 		E5712C4E2696D8C100081D90 /* ImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5712C4D2696D8C100081D90 /* ImagesCell.swift */; };
 		E5724E2426982A780032C3A0 /* WKVIEWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5724E2326982A770032C3A0 /* WKVIEWViewController.swift */; };
@@ -59,6 +60,7 @@
 		E55EFAEF269C3085004D6FDE /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		E55EFAF2269C30A5004D6FDE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E55EFAFC269C3A70004D6FDE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E56AB0AB269EB5850079B43F /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		E5712C492696D5C000081D90 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		E5712C4D2696D8C100081D90 /* ImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCell.swift; sourceTree = "<group>"; };
 		E5724E2326982A770032C3A0 /* WKVIEWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKVIEWViewController.swift; sourceTree = "<group>"; };
@@ -179,12 +181,12 @@
 			isa = PBXGroup;
 			children = (
 				E55EFAF5269C31CC004D6FDE /* Login */,
-				E55EFAD6269C28F5004D6FDE /* ChatViewController.swift */,
 				E55EFAE6269C3027004D6FDE /* PhotoViewerViewController.swift */,
 				E55EFAE9269C3040004D6FDE /* VideoPlayerViewController.swift */,
 				E55EFAEC269C306D004D6FDE /* NewConversationViewController.swift */,
 				E55EFAEF269C3085004D6FDE /* ConversationsViewController.swift */,
 				E55EFAF2269C30A5004D6FDE /* ProfileViewController.swift */,
+				E56AB0AB269EB5850079B43F /* ChatsViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -214,6 +216,7 @@
 			children = (
 				E55EFADE269C2FBE004D6FDE /* Chat */,
 				E554ED7026872CF6007740EF /* ViewController.swift */,
+				E55EFAD6269C28F5004D6FDE /* ChatViewController.swift */,
 				E5712C492696D5C000081D90 /* ImagesViewController.swift */,
 				E5712C4D2696D8C100081D90 /* ImagesCell.swift */,
 				E5724E2326982A770032C3A0 /* WKVIEWViewController.swift */,
@@ -379,6 +382,7 @@
 				E55EFAEA269C3040004D6FDE /* VideoPlayerViewController.swift in Sources */,
 				E55EFAF3269C30A5004D6FDE /* ProfileViewController.swift in Sources */,
 				E554ED6D26872CF6007740EF /* AppDelegate.swift in Sources */,
+				E56AB0AC269EB5850079B43F /* ChatsViewController.swift in Sources */,
 				E554ED6F26872CF6007740EF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
