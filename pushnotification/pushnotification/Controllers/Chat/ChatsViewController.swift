@@ -66,6 +66,7 @@ class ChatsViewController: MessagesViewController {
     }()
     
     public var otherUserEmail: String
+    private var conversationId: String?
     
     public var isNewConversation = false
     
@@ -76,12 +77,15 @@ class ChatsViewController: MessagesViewController {
             return nil
         }
         
-        return Sender(senderId: email,
-               displayName: "Joe Smith",
-               photURL: "")
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        
+        return Sender(senderId: safeEmail,
+                      displayName: "Me",
+                      photURL: "")
     }
     
-    init(with email: String) {
+    init(with email: String, id: String?) {
+        self.conversationId = id
         self.otherUserEmail = email
         super.init(nibName: nil, bundle: nil)
     }
@@ -99,9 +103,36 @@ class ChatsViewController: MessagesViewController {
         messageInputBar.delegate = self
     }
     
+    private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
+        DatabaseManager.shared.getAllMessagesForConversation(with: id, completion: { [weak self] result in
+            switch result {
+            case .success(let messages):
+                print("succes in getting messages \(messages)")
+                guard !messages.isEmpty else {
+                    print("messages are empty")
+                    return
+                }
+                self?.messages = messages
+                
+                DispatchQueue.main.async {
+                    self?.messagesCollectionView.reloadDataAndKeepOffset()
+                    if shouldScrollToBottom {
+                        self?.messagesCollectionView.scrollToBottom()
+                    }
+                }
+                
+            case .failure(let error):
+                print("Failed to get messages: \(error)")
+            }
+        })
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messageInputBar.inputTextView.becomeFirstResponder()
+        if let conversationId = conversationId {
+            listenForMessages(id: conversationId, shouldScrollToBottom: true)
+        }
     }
     
 }
@@ -124,7 +155,7 @@ extension ChatsViewController: InputBarAccessoryViewDelegate {
                                   sentDate: Date(),
                                   kind: .text(text),
                                   sender: selfSender)
-            DatabaseManager.shared.createNewconversation(with: otherUserEmail, firstMessage: message, completion: { success in
+            DatabaseManager.shared.createNewconversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: message, completion: { success in
                 if success {
                     print("message sent")
                 } else {
@@ -161,9 +192,7 @@ extension ChatsViewController: MessagesDataSource, MessagesLayoutDelegate, Messa
         if let sender = selfSender {
             return sender
         }
-       
         fatalError("Self Sender is nil, email should be cached")
-        return Sender(senderId: "12", displayName: "", photURL: "")
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
@@ -173,6 +202,5 @@ extension ChatsViewController: MessagesDataSource, MessagesLayoutDelegate, Messa
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
-    
     
 }
