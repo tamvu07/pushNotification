@@ -194,6 +194,8 @@ class RegisterViewController: UIViewController {
         
         spinner.show(in: view)
         
+        UserDefaults.standard.setValue(email, forKey: "email")
+        
         DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
             
             guard let strongSelf = self else {
